@@ -10,10 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_134920) do
+ActiveRecord::Schema.define(version: 2021_02_15_135620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "user_id", null: false
+    t.string "category"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.integer "price"
+    t.integer "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_reservations_on_game_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.bigint "reservation_id", null: false
+    t.bigint "user_id", null: false
+    t.string "role"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +62,9 @@ ActiveRecord::Schema.define(version: 2021_02_15_134920) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "games", "users"
+  add_foreign_key "reservations", "games"
+  add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "reservations"
+  add_foreign_key "reviews", "users"
 end
