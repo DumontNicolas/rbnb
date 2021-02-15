@@ -1,0 +1,8 @@
+<h1>Rent your own game!</h1>
+<%= simple_form_for(@game) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
+  <%= f.input :price %>
+  <%= f.submit %>
+<% end %>
