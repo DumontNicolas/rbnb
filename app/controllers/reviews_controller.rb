@@ -12,16 +12,16 @@ class ReviewsController < ApplicationController
     @reservation = Reservation.find(params[:reservation_id])
     @review = Review.new(review_params)
     @review.reservation = @reservation
-    @review.save
-    if @review_save
+    if @review.save
       redirect_to reservation_path(@reservation)
-    else render :new
+    else
+      render :new
     end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:content, :rating, :role)
   end
 end
