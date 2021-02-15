@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+.ContainerA {
+  display: flex;
+  flex-grow: 1;
+  margin: 30px;
+}
+
+.ContainerAa {
+padding: 10px;
+margin: 10px;
+padding-top: 100px;
+max-width: 55%
+}
+
+body {
+  background-image: linear-gradient(#200122, #6f0000);
+  height: 1000px;
+}
+
+h2 {
+  color: white;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 100px;
+}
+
+
+.nav-link {
+  color: white !important;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 25px;
+}
+
+.nav-link-light {
+  color: rgba(255, 255, 255,0.5) !important;
+  padding: 0.5rem 1rem;
+  display: block;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 25px;
+}
+
+.dropdown-item {
+  font-family: 'Bebas Neue';
+  color: white;
+
+}
+
+.dropdown-menu {
+  background: rgba(0,0,0,0.1);
+}
