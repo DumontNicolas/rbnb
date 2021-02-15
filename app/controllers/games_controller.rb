@@ -1,4 +1,12 @@
 class GamesController < ApplicationController
+  def index
+    @games = Game.all
+  end
+
+  def show
+    @game = Game.find(params[:id])
+  end
+  
   def new
     @game = Game.new
   end
@@ -10,14 +18,6 @@ class GamesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def index
-    @games = Game.all
-  end
-
-  def show
-    @game = Game.find(params[:id])
   end
 
   def edit
@@ -42,6 +42,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name :description :category :price)
+    params.require(:game).permit(:name, :description, :category, :price)
   end
 end
