@@ -2,6 +2,15 @@
 
 <ul>
   <% @games.each do |game| %>
-    <li><%= link_to game.name, game_path(game) %> - <em><%= game.category %> - <%= link_to "Edit", edit_game_path(game) %> - <%= link_to "Delete", game_path(game), method: :delete, confirm: "Delete #{game.name}?" %></em><br> <%= game.description %></li>
+    <li><%= game.name %> - <em><%= game.category %></em><br> <%= game.description %></li>
+    <% if policy(game).edit? %>
+      <%= link_to "Update", edit_game_path(game.id) %>
+    <% end %>
+    <% if policy(game).destroy? %>
+      <%= link_to  "Delete", game_path(game.id), method: :delete %>
+    <% end %>
   <% end %>
 </ul>
+<% if policy(Game).create? %>
+  <%= link_to  "New Game", new_game_path %>
+<% end %>
