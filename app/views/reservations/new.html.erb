@@ -1,2 +1,10 @@
-<h1>Reservations#new</h1>
-<p>Find me in app/views/reservations/new.html.erb</p>
+<h1>Rent a game!</h1>
+<%= simple_form_for(@reservation) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :game %>
+  <%= f.input :status, collection: %W[Confirmed Cancelled Pending Completed]  %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back to games list", games_path %>
