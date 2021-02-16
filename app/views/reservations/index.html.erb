@@ -1,2 +1,22 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<h1> <%= @user.first_name %>'s reservations</h1>
+
+<table>
+  <tr>
+    <th>Game:</th>
+    <th>From:</th>
+    <th>to:</th>
+    <th>Cost (per night):</th>
+    <th>Status:</th>
+    <th></th>
+  </tr>
+  <% @reservations.each do |reservation| %>
+    <tr>
+      <th><%= reservation.game.name %></th>
+      <th><%= reservation.start_date %></th>
+      <th><%= reservation.end_date %></th>
+      <th><%= reservation.game.price %>€</th>
+      <th><em><%= reservation.status %></em></th>
+      <th><%= link_to "Edit", edit_reservation_path(reservation) %> - <%= link_to "Delete", reservation_path(reservation), method: :delete, confirm: "Delete this reservation?" %></em></th>
+    </tr>
+  <% end %>
+</table>
