@@ -6,11 +6,12 @@
 
 <p>Category: <%= @game.category %></p>
 
-<h2>Reviews:</h2>
 <ul>
-  <% @game.reservations.each do |reservation|
-    reservation.reviews.each do |review| %>
-      <li><%= review.content %> - Rating: <%= review.rating %> </li>
+  <% @game.reservations.each do |reservation| %>
+    <% unless reservation.reviews.empty? %>
+      <% reservation.reviews.each do |review| %>
+        <li>Review: <%= review.content %> - Rating: <%= review.rating %>/5 </li>
+      <% end %>
     <% end %>
   <% end %>
 </ul>
