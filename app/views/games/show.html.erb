@@ -8,8 +8,10 @@
 
 <h2>Reviews:</h2>
 <ul>
-  <% @game.reservations.reviews.each do |review| %>
-    <li><%= review.content %> - Rating: <%= review.rating %> </li>
+  <% @game.reservations.each do |reservation|
+    reservation.reviews.each do |review| %>
+      <li><%= review.content %> - Rating: <%= review.rating %> </li>
+    <% end %>
   <% end %>
 </ul>
 
