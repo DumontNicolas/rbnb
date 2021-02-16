@@ -1,1 +1,19 @@
-<h1>Games#show</h1>
+<h1><%= @game.name %></h1>
+
+<p> Description: <br> <%= @game.description %> </p>
+
+<p>Price: <%= @game.price %>€</p>
+
+<p>Category: <%= @game.category %></p>
+
+<ul>
+  <% @game.reservations.each do |reservation| %>
+    <% unless reservation.reviews.empty? %>
+      <% reservation.reviews.each do |review| %>
+        <li>Review: <%= review.content %> - Rating: <%= review.rating %>/5 </li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "Back to games list", games_path %>

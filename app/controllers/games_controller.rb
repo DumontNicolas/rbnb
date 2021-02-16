@@ -43,7 +43,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     authorize @game
     @game.destroy
-    redirect_to game_path(@game)
+    redirect_to games_path
   end
 
   private
