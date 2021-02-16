@@ -6,9 +6,11 @@
 
 <p>Category: <%= @game.category %></p>
 
-<%# <h2>Reviews:</h2>
+<h2>Reviews:</h2>
 <ul>
-  <% @game.reviews.each do |review| %>
-    <%# <li><%= review.content </li> %>
-  <%# <% end %>
-<%# </ul> %>
+  <% @game.reservations.reviews.each do |review| %>
+    <li><%= review.content %> - Rating: <%= review.rating %> </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to games list", games_path %>
