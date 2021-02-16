@@ -18,10 +18,17 @@ body {
   color: white
 }
 
-h2 {
+h2, h1 {
   color: white;
   font-family: 'Bebas Neue', cursive;
+}
+
+h1 {
   font-size: 100px;
+}
+
+h2 {
+  font-size: 60px;
 }
 
 
@@ -47,4 +54,9 @@ h2 {
 
 .dropdown-menu {
   background: rgba(0,0,0,0.1);
+}
+
+.container-new {
+  padding: 30px;
+  text-align: center;
 }
