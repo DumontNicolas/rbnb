@@ -4,14 +4,14 @@ const search = document.querySelector(".form-control");
 const autoComplete = () => {
   search.addEventListener("keyup", (event) => {
     // console.log(event.target.value);
-    fetch(`http://${window.location.hostname}/search?name=${event.target.value}`)
+    fetch(`http://${window.location.host}/search?name=${event.target.value}`)
     .then(response => response.json())
     .then((data) => {
       // console.log(data);
       results.innerHTML = "";
       data.forEach(element => {
         // console.log(element.name);
-        results.insertAdjacentHTML('beforeend', `<li><a href="http://${window.location.hotsname}/games/${element.id}">${element.name}</a></li>`)
+        results.insertAdjacentHTML('beforeend', `<li><a href="http://${window.location.host}/games/${element.id}">${element.name}</a></li>`)
       });
     });
   });
