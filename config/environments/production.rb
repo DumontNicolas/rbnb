@@ -62,7 +62,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url =  { host: "all-a-board-dumontnicolas.herokuapp.com"}
+  config.action_mailer.default_url_options =  { host: "all-a-board-dumontnicolas.herokuapp.com"}
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
