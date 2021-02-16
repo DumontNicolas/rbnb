@@ -1,2 +1,10 @@
-<h1>Games#edit</h1>
-<p>Find me in app/views/games/edit.html.erb</p>
+<h1>Edit <%= @game.name %></h1>
+<%= simple_form_for(@game) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
+  <%= f.input :price %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back to games list", games_path %>

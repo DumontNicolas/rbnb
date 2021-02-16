@@ -1,2 +1,16 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<h1><%= @game.name %></h1>
+
+<p> Description: <br> <%= @game.description %> </p>
+
+<p>Price: <%= @game.price %>€</p>
+
+<p>Category: <%= @game.category %></p>
+
+<h2>Reviews:</h2>
+<ul>
+  <% @game.reservations.reviews.each do |review| %>
+    <li><%= review.content %> - Rating: <%= review.rating %> </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to games list", games_path %>

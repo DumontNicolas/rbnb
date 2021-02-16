@@ -2,6 +2,6 @@
 
 <ul>
   <% @games.each do |game| %>
-    <li><%= game.name %> - <em><%= game.category %></em><br> <%= game.description %></li>
+    <li><%= link_to game.name, game_path(game) %> - <em><%= game.category %> - <%= link_to "Edit", edit_game_path(game) %> - <%= link_to "Delete", game_path(game), method: :delete, confirm: "Delete #{game.name}?" %></em><br> <%= game.description %></li>
   <% end %>
 </ul>
