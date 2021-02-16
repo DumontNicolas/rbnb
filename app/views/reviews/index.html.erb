@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Reviews on reservation for <%=@reservation.game.name%> / <%=@reservation.start_date%></h2>
+  
+  <div class="mt-3 mb-3" style="color: white">
+    <ul style="list-style: none">
+      <% @reviews.each do |review|%>
+      <li><%= p review.content %> - <%= p review.rating %></li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <a href="./reviews/new" type="new" class="btn btn-light btn-lg">Leave a review</a>
+</div>

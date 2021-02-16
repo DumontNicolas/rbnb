@@ -1,0 +1,15 @@
+<div class="container" style="color: white">
+  <h2>Your review about <%=@reservation.game.name%></h2>
+  
+  <div class="w-50">
+    <%= simple_form_for [ @reservation, @review ] do |f| %>
+    <%= f.input :content, placeholder: "How was your experience?", required: true, as: :text %>
+    <%= f.input :rating, collection: 1..5, required: true %>
+    <%= f.button :submit, class: "btn btn-light btn-lg" %>
+    <% end %>
+    
+    <button class="btn btn-light btn-lg mt-5">
+      <%= link_to 'Back to reservation', reservation_reviews_path(@reservation) %>
+    </button>
+  </div>
+</div>
