@@ -28,8 +28,10 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
+    @game = Game.find(params[:reservation][:game])
+    @reservation.game = @game
     if @reservation.update(reservation_params)
-      redirect_to reservation_path(@reservation)
+      redirect_to user_reservations_path(@reservation.user)
     else
       render :new
     end
