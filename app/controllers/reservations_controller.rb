@@ -1,11 +1,18 @@
 class ReservationsController < ApplicationController
   def index
+    @authorized_user = false
     @user = User.find(params[:user_id])
-    @reservations = @user.reservations.all
+    @reservations = policy_scope(Reservation).order(created_at: :desc).where("user_id = #{@user.id}") 
+    if @user == current_user
+      @authorized_user = true   
+    else
+      redirect_to root_path
+    end
   end
 
   def new
     @reservation = Reservation.new
+    authorize @reservation
   end
 
   def create
@@ -15,6 +22,8 @@ class ReservationsController < ApplicationController
     @reservation.game = @game
     @reservation.user = current_user
     @reservation.total = [@game.price, @game.price * nights].max
+    @reservation.status = "Pending"
+    authorize @reservation
     if @reservation.save!
       redirect_to user_reservations_path(@reservation.user)
     else
@@ -24,12 +33,14 @@ class ReservationsController < ApplicationController
 
   def edit
     @reservation = Reservation.find(params[:id])
+    authorize @reservation
   end
 
   def update
     @reservation = Reservation.find(params[:id])
     @game = Game.find(params[:reservation][:game])
     @reservation.game = @game
+    authorize @reservation
     if @reservation.update(reservation_params)
       redirect_to user_reservations_path(@reservation.user)
     else
