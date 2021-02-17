@@ -53,7 +53,7 @@ p "Games generation completed"
 
 
 p "And now, reservations..."
-stat = ["pending", "cancelled", "confirmed"]
+stat = ["pending", "cancelled", "completed"]
 
 10.times do
   reservation = Reservation.create!(
