@@ -12,6 +12,8 @@
 
 <p>Category: <%= @game.category %></p>
 
+<p>Owner: <%= link_to @game.user.first_name + " " + @game.user.last_name, user_path(@game.user) %></p>
+
 <ul>
   <% @game.reservations.each do |reservation| %>
     <% unless reservation.reviews.empty? %>
@@ -22,6 +24,9 @@
   <% end %>
 </ul>
 
-<%= link_to "Reserve this game", new_reservation_path %>
+<% if current_user != @game.user %>
+  <%= link_to "Reserve this game", new_reservation_path %>
+<% end %>
 
+<br>
 <%= link_to "Back to games list", games_path %>
