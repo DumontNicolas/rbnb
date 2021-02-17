@@ -2,7 +2,7 @@
 
 <ul>
   <% @games.each do |game| %>
-    <li><%= game.name %> - <em><%= game.category %></em><br> <%= game.description %></li>
+    <li><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em><br> <%= game.description %></li>
     <% if policy(game).edit? %>
       <%= link_to "Update", edit_game_path(game.id) %>
     <% end %>
