@@ -3,6 +3,12 @@ class GamesController < ApplicationController
     @games = policy_scope(Game).order(created_at: :desc)
   end
 
+  def search
+    @games = policy_scope(Game).order(created_at: :desc).where("name LIKE ?", "%" + params[:name] + "%")
+    authorize @games
+    render json: @games
+  end
+
   def show
     @game = Game.find(params[:id])
     authorize @game
