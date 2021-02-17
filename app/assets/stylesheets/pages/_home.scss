@@ -2,6 +2,11 @@
 @import "./../components/searchbar";
 @import "../components/map";
 
+
+#container {
+  padding: 30px;
+}
+
 .ContainerA {
   display: flex;
   flex-grow: 1;
