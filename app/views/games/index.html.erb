@@ -1,16 +1,37 @@
 <h1>Games</h1>
 
-<ul>
-  <% @games.each do |game| %>
-    <li><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em><br> <%= game.description %></li>
-    <% if policy(game).edit? %>
-      <%= link_to "Update", edit_game_path(game.id) %>
+<br>
+<br>
+
+<div class="row">
+  <div class="column">
+    <% @games.each do |game| %>
+      <div class="card-trip">
+        <img src="https://images.pexels.com/photos/776654/pexels-photo-776654.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em></h2>
+            <p><%= game.description %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= game.price %>$</h2>
+          <img src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png" class="card-trip-user avatar-bordered" />
+        </div>
+      </div>
     <% end %>
-    <% if policy(game).destroy? %>
-      <%= link_to  "Delete", game_path(game.id), method: :delete %>
-    <% end %>
+  </div>
+</div>
+
+<br>
+
+<div class="container-new-game">
+  <% if policy(Game).create? %>
+    <div class="hbtn hb-fill-on">
+        <%= link_to "New Game", new_game_path%>
+    </div>
   <% end %>
-</ul>
-<% if policy(Game).create? %>
-  <%= link_to  "New Game", new_game_path %>
-<% end %>
+</div>
+
+
+
+
+

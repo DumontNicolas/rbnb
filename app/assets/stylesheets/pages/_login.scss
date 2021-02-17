@@ -11,6 +11,8 @@
 
 .btn {
   padding: 2px, 4px !important;
+  color: white;
+  font-family: 'Bebas Neue', cursive;
 }
 
 a {
@@ -19,6 +21,9 @@ a {
   text-decoration: none !important;
 }
 
+a:hover {
+  color: black;
+}
 .email, .form-control,.password {
   font-family: 'Bebas Neue', cursive;
 }
