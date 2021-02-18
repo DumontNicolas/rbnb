@@ -2,7 +2,7 @@
 #new_user {
 }
 
-#container-login {
+.container-login {
   width: 300px;
 }
 
@@ -15,6 +15,10 @@
   font-family: 'Bebas Neue', cursive;
 }
 
+.btn:hover {
+  color: #ed6161;
+}
+
 a {
   color: white;
   font-family: 'Bebas Neue', cursive;
@@ -22,7 +26,11 @@ a {
 }
 
 a:hover {
-  color: black;
+  color: #ed6161;
+}
+
+.btn a:hover {
+  color: #ed6161;
 }
 .email, .form-control,.password {
   font-family: 'Bebas Neue', cursive;
@@ -78,7 +86,7 @@ a:hover {
 
 
 .hb-fill-on:hover {
-      color: rgb(0, 0, 0);
+      color: #ed6161;
       background-color: rgb(255, 255, 255);
       transition: color 0.3s ease, background 0s ease 0.3s;
       background-position: initial initial;

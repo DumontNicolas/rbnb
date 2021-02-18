@@ -6,11 +6,12 @@
 <br>
 <%= simple_form_for(@game) do |f| %>
 
-  <div id="container-login">
+  <div class="container-login">
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
     <%= f.input :price %>
+
     <%= f.input :photo, as: :file %>
   </div>
 <br>

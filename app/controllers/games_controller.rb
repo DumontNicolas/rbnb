@@ -4,12 +4,22 @@ class GamesController < ApplicationController
   end
 
   def search
-    @games = policy_scope(Game).order(created_at: :desc).where("name LIKE ?", "%" + params[:name] + "%")
+    sql_query = "name ILIKE :query OR category ILIKE :query"
+    @games = policy_scope(Game).order(created_at: :desc).where(sql_query, query: "%#{params[:query]}%")
     authorize @games
     render json: @games
   end
 
   def show
+    @users = User.all.where("id = ?", Game.find(params[:id]).user_id)
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @users.geocoded.map do |user|
+    {
+        lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+    }
+    end
     @game = Game.find(params[:id])
     authorize @game
   end
