@@ -4,7 +4,8 @@ class GamesController < ApplicationController
   end
 
   def search
-    @games = policy_scope(Game).order(created_at: :desc).where("name LIKE ?", "%" + params[:name] + "%")
+    sql_query = "name ILIKE :query OR category ILIKE :query"
+    @games = policy_scope(Game).order(created_at: :desc).where(sql_query, query: "%#{params[:query]}%")
     authorize @games
     render json: @games
   end
