@@ -21,7 +21,15 @@ const tabs = () => {
         requests.classList.add("active");
     });
     }
-};
 
+    const navitems = document.querySelectorAll(".nav-item")
+    navitems.forEach((item) => {
+        if (item.outerHTML.includes(`href="${window.location.pathname}"`)) {
+            item.classList.add("active");
+            item.lastElementChild.classList.remove("nav-link-light");
+            item.lastElementChild.classList.add("nav-link");
+        };
+        });
+};
 
 export default tabs;
