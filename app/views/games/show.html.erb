@@ -1,4 +1,3 @@
-
 <div class="big-container">
   <div class="img-show col-5">
     <% if @game.photo.attached? %>
@@ -36,7 +35,10 @@
     </div>
   </div>
   <div class="container-map col-3">
-    <div class="map"> MAAAAAPPP</div>
+    <div id="map" style="width: 100%; height: 600px;"
+         data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
     <br>
     <div class="owner">
       <% if current_user != @game.user %>
@@ -57,4 +59,3 @@
 <div class="show-back">
   <%= link_to "Back to games list", games_path %>
 </div>
-

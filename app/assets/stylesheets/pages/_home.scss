@@ -3,25 +3,8 @@
 @import "../components/map";
 
 
-#container {
+.container {
   padding: 30px;
-}
-
-.ContainerA {
-  display: flex;
-  flex-grow: 1;
-  margin: 30px;
-}
-
-.ContainerAa {
-padding: 10px;
-margin: 10px;
-padding-top: 100px;
-max-width: 55%
-}
-
-html   {
-
 }
 
 body {
@@ -44,6 +27,10 @@ h2 {
   font-size: 60px;
 }
 
+.typed-title {
+  width: 48%;
+  margin-top: 20px;
+}
 
 .nav-link {
   color: white !important;
