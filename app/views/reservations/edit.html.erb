@@ -3,7 +3,9 @@
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.input :game, collection: Game.all %>
-  <%= f.input :status, collection: %W[Confirmed Cancelled Pending Completed]  %>
+  <% if @reservation.user == @reservation.game.user %>
+    <%= f.input :status, collection: %W[Confirmed Cancelled Pending Completed]  %>
+  <% end %>
   <%= f.submit %>
 <% end %>
 

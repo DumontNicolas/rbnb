@@ -25,7 +25,7 @@
           <td><%= reservation.end_date %></td>
           <td><%= reservation.game.price %>€</td>
           <td><em><%= reservation.status %></em></td>
-          <td><%= link_to "Edit", edit_reservation_path(reservation) %> - <%= link_to "Delete", reservation_path(reservation), method: :delete, confirm: "Delete this reservation?" %></em></td>
+          <td><em><%= link_to "Edit", edit_reservation_path(reservation) %> </em></td>
         </tr>
     <% end %>
   </tbody>
@@ -52,7 +52,7 @@
           <td><%= reservation.end_date %></td>
           <td><%= reservation.game.price %>€</td>
           <td><em><%= reservation.status %></em></td>
-          <td><%= link_to "Edit", edit_reservation_path(reservation) %> - <%= link_to "Delete", reservation_path(reservation), method: :delete, confirm: "Delete this reservation?" %></em></td>
+          <td><%= link_to "Edit", edit_reservation_path(reservation) %></td>
         </tr>
       <% end %>
     <% end %>
