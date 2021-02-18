@@ -1,42 +1,44 @@
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<div class="container">
+  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
-<h2><%= @user.first_name %>'s games</h2>
-<% unless @user.games.empty? %>
-  <table>
-    <thead>
-      <th> Game: </th>
-      <th> Category:</th>
-      <th> Price per night:</th>
-      <th> Times reserved:</th>
-    </thead>
-    <% @user.games.each do |game| %>
-    <tbody>
-      <th> <%= link_to game.name, game_path(game)  %> </th>
-      <th> <%= game.category %></th>
-      <th> <%= game.price %>€</th>
-      <th> <%= game.reservations.count %></th>
-    </tbody>
-    <% end %>
-  </table>
-<% else %>
-  <p>No games yet!</p>
-<% end %>
+  <h2><%= @user.first_name %>'s games</h2>
+  <% unless @user.games.empty? %>
+    <table>
+      <thead>
+        <th> Game: </th>
+        <th> Category:</th>
+        <th> Price per night:</th>
+        <th> Times reserved:</th>
+      </thead>
+      <% @user.games.each do |game| %>
+      <tbody>
+        <th> <%= link_to game.name, game_path(game)  %> </th>
+        <th> <%= game.category %></th>
+        <th> <%= game.price %>€</th>
+        <th> <%= game.reservations.count %></th>
+      </tbody>
+      <% end %>
+    </table>
+  <% else %>
+    <p>No games yet!</p>
+  <% end %>
 
-<h2><%= @user.first_name %>'s reviews</h2>
+  <h2><%= @user.first_name %>'s reviews</h2>
 
-<% unless @user.reviews.empty? %>
-  <table>
-    <thead>
-      <th> Game: </th>
-      <th> Review:</th>
-    </thead>
-    <% @user.reviews.each do |review| %>
-    <tbody>
-      <th> <%= link_to review.reservation.game.name, game_path(review.reservation.game)  %> </th>
-      <th> <%= review.content %></th>
-    </tbody>
-    <% end %>
-  </table>
-<% else %>
-  <p>No reviews yet!</p>
-<% end %>
+  <% unless @user.reviews.empty? %>
+    <table>
+      <thead>
+        <th> Game: </th>
+        <th> Review:</th>
+      </thead>
+      <% @user.reviews.each do |review| %>
+      <tbody>
+        <th> <%= link_to review.reservation.game.name, game_path(review.reservation.game)  %> </th>
+        <th> <%= review.content %></th>
+      </tbody>
+      <% end %>
+    </table>
+  <% else %>
+    <p>No reviews yet!</p>
+  <% end %>
+</div>
