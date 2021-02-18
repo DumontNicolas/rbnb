@@ -1,12 +1,39 @@
 <h1><%= @game.name %></h1>
 
 <% if @game.photos.attached? %>
+
+<div class="row">
+  <div class="col-md-4">
+    <div id="carouselGame" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% @game.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item <% if index == 0 %> active <% end %>">
+          <img src="<%= cl_image_path photo.key, height: 400, width: 400, crop: :fill%>" class="d-block w-100" alt="...">
+        </div>
+      <% end %>
+    </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+    </div>
+  </div>
+</div>
+<% else %>
+<%= "Add a photo!" %>
+<% end %>
+
+<!-- <% if @game.photos.attached? %>
 <% @game.photos.each do |photo| %>
 <%= cl_image_tag photo.key, height: 500, width: 500, crop: :fill %>
 <% end %>
 <% else %>
 <%= "Add a photo!" %>
-<% end %>
+<% end %> -->
 
 <p> Description: <br> <%= @game.description %> </p>
 

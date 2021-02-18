@@ -5,12 +5,10 @@
 
 <div class="row">
   <div class="column">
-    <% i = 1 %>
-    <% @games.each do |game| %>
+    <% @games.each_with_index do |game, index| %>
       <div class="card-trip">
         <% if game.photos.size == 0 %>
-        <img src="<%="https://source.unsplash.com/random?sig=#{i},gaming" %>" />
-        <% i += 1 %>
+        <img src="<%="https://source.unsplash.com/random?sig=#{index},gaming" %>" />
         <% else %>
         <%= cl_image_tag game.photos.first.key %>
         <% end %>
