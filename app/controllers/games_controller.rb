@@ -11,6 +11,15 @@ class GamesController < ApplicationController
   end
 
   def show
+    @users = User.all.where("id = ?", Game.find(params[:id]).user_id)
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @users.geocoded.map do |user|
+    {
+        lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+    }
+    end
     @game = Game.find(params[:id])
     authorize @game
   end
