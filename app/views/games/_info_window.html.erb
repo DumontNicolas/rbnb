@@ -1,5 +1,5 @@
 <h2 style="color:black"><%= user.first_name %></h2>
 <p><%= user.location %></p>
 <% user.games.each do |game| %>
-  <p><%= link_to game.name, game_path(game)%></p>
+  <p><%= link_to game.name, game_path(game), style:"color:black"%></p>
 <% end %>
