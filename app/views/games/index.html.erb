@@ -5,9 +5,15 @@
 
 <div class="row">
   <div class="column">
+    <% i = 1 %>
     <% @games.each do |game| %>
       <div class="card-trip">
-        <img src="https://images.pexels.com/photos/776654/pexels-photo-776654.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
+        <% if game.photos.size == 0 %>
+        <img src="<%="https://source.unsplash.com/random?sig=#{i},gaming" %>" />
+        <% i += 1 %>
+        <% else %>
+        <%= cl_image_tag game.photos.first.key %>
+        <% end %>
         <div class="card-trip-infos">
           <div>
             <h2><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em></h2>

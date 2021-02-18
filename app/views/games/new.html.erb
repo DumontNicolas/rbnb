@@ -11,7 +11,7 @@
     <%= f.input :description %>
     <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
     <%= f.input :price %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
 <br>
   <div class="hbtn hb-fill-on">
