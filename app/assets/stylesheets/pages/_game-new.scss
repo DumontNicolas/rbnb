@@ -4,7 +4,7 @@ body {
 }
 
 .form-control-file {
-
+  color : rgba(0,0,0,.3)!important;
 }
 
 #file-upload-button {
@@ -31,5 +31,32 @@ body {
 .upload-photo:hover{
   color: rgb(237,97,97);
   text-decoration: none;
+}
+
+.modal-content {
+  color: black;
+}
+
+.modal-header h5 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 36px;
+}
+
+#text {
+  color: black;
+}
+
+.button-new-game-close {
+  color: rgba(0,0,0,.3);
+  border: 0px solid transparent;
+}
+
+.button-new-game-create {
+  color: rgb(237,97,97);
+  border: 0px solid transparent;
+}
+
+.upload-photo {
+
 }
 
