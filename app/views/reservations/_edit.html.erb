@@ -1,9 +1,9 @@
-        <h1><%=reservation.game.name%></h1>
+        <h2 style="color:black"><%=reservation.game.name%></h2>
 
         <%= simple_form_for(reservation) do |f| %>
-            <%= f.input :start_date, label: "Change your date", as: :string, required: false, input_html: {class: "datepicker"} %>
-          <% if reservation.user != reservation.game.user %>
-            <%= f.input :status, collection: %W[Confirmed Cancelled Pending Completed]  %>
+            <%= f.input :start_date, label: "Change your date", as: :string, required: false, input_html: {class: "datepicker", value: "#{reservation.start_date} to #{reservation.end_date}"} %>
+          <% if current_user == reservation.game.user %>
+            <%= f.input :status, collection: %W[confirmed cancelled pending completed]  %>
           <% end %>
           <%= f.submit %>
         <% end %>
