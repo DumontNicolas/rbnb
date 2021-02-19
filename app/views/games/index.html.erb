@@ -16,7 +16,7 @@
       <% @games.first(6).each_with_index do |game, i| %>
       <div class="card-trip">
         <% if game.photos.size == 0 %>
-        <img src="<%="https://source.unsplash.com/random?sig=#{i},gaming" %>" />
+        <%= image_tag "placeholders/#{rand(10)}.jpg" %>
         <% else %>
         <%= cl_image_tag game.photos.first.key %>
         <% end %>
