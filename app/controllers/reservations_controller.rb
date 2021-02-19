@@ -18,7 +18,12 @@ class ReservationsController < ApplicationController
   def create
     @game = Game.find(params[:reservation][:game])
     @reservation = Reservation.new(reservation_params)
+    start_date = reservation_params["start_date"].split('to')[0].strip
+    end_date = reservation_params["start_date"].split('to')[1].strip
+    @reservation.start_date = start_date
+    @reservation.end_date = end_date
     nights = (@reservation.end_date - @reservation.start_date).to_i
+    @reservation.game = @game
     @reservation.game = @game
     @reservation.user = current_user
     @reservation.total = [@game.price, @game.price * nights].max

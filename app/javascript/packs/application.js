@@ -32,6 +32,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initTyped } from '../plugins/init_typed';
 import { previewImageOnFileSelect } from './components/photo_preview';
 import tabs from './components/tabs';
+import { initFlatpickr } from "../plugins/init_flatpickr";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -40,5 +41,6 @@ document.addEventListener('turbolinks:load', () => {
   autoComplete();
   initMapbox();
   previewImageOnFileSelect();
+  initFlatpickr();
 });
 
