@@ -10,7 +10,9 @@ const autoComplete = () => {
       .then(response => response.json())
       .then((data) => {
         // console.log(data);
-        results.innerHTML = "";
+        if (results) {
+          results.innerHTML = "";
+        }
         data.forEach(element => {
           // console.log(element.name);
           results.insertAdjacentHTML('beforeend', `<div class="card-trip">
