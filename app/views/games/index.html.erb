@@ -12,13 +12,12 @@
           </div>
         </form>
     </div>
-    <div class="container-new-game">
+    <div class="container-create-new-game">
       <% if policy(Game).create? %>
-        <button type="button" class="hbtn hb-fill-on" data-toggle="modal" data-target="#exampleModal" style="color:black">
-            Add your own game
-        </button>
+        <%= link_to "add your own game", "#", class:"hbtn hb-fill-on", data: { toggle: "modal", target: "exampleModal"} %>
       <% end %>
     </div>
+
 
   </div>
   <br><br>
