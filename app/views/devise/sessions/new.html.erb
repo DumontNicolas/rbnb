@@ -14,14 +14,6 @@
     </div>
     <div class="hbtn hb-fill-on">
       <%= f.button :submit, "Log in"%>
-      <% if user_signed_in? == false %>
-        <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
-          <span><strong>Wrong Email or Password</strong> a problem has occurred while processing login.</span>
-          <a data-dismiss="alert" aria-label="Close">
-            <i class="fas fa-times"></i>
-          </a>
-        </div>
-      <% end %>
     </div>
   <% end %>
 
