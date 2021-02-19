@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AllaBoard</title>
+    <title>All-a-Board</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -58,7 +58,7 @@
     </ul>
   </div>
 </div>
-
+<%= render 'shared/flashes' %>
 <div id="container">
     <%= yield %>
 </div>

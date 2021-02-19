@@ -30,6 +30,7 @@ import "bootstrap";
 import { autoComplete } from './components/autocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initTyped } from '../plugins/init_typed';
+import { previewImageOnFileSelect } from './components/photo_preview';
 import tabs from './components/tabs';
 
 document.addEventListener('turbolinks:load', () => {
@@ -38,5 +39,6 @@ document.addEventListener('turbolinks:load', () => {
   tabs();
   autoComplete();
   initMapbox();
+  previewImageOnFileSelect();
 });
 
