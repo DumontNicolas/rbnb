@@ -44,10 +44,14 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     authorize @reservation
+    start_date = reservation_params["start_date"].split('to')[0].strip
+    end_date = reservation_params["start_date"].split('to')[1].strip
+    @reservation.start_date = start_date
+    @reservation.end_date = end_date
     if @reservation.update(reservation_params)
       redirect_to user_reservations_path(current_user)
     else
-      render :edit
+      render root_path
     end
   end
 
