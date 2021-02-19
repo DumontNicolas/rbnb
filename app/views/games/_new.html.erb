@@ -3,10 +3,9 @@
 <br>
 <h1>Rent your own game!</h1>
 
-<<<<<<< HEAD:app/views/games/new.html.erb
 <br>
 <br>
-<%= simple_form_for(@game) do |f| %>
+<%= simple_form_for(game) do |f| %>
 
 <div class="container-create-game">
   <div class="container-login">
@@ -17,11 +16,6 @@
     <%= f.input :photos, as: :file, input_html: { multiple: true } %> input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
     <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
   </div>
-=======
-  <br>
-  <br>
-  <%= simple_form_for(game) do |f| %>
->>>>>>> 7496cc7491d61eed580c0aefb395c6120af7e834:app/views/games/_new.html.erb
 
 <br>
   <div class= "btn-create-game">
