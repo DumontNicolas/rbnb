@@ -21,13 +21,43 @@
   <tbody>
     <% @reservations.each do |reservation| %>
 
-    <div class="card-reservation">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-reservation-infos">
-        <h2>Product name</h2>
-        <p>Product description with <strong>relevant info</strong> only.</p>
+      <div class="card-reservation">
+        <% if reservation.game.photos.size == 0 %>
+        <%= image_tag "placeholders/#{rand(10)}.jpg" %>
+        <% else %>
+        <%= cl_image_tag reservation.game.photos.first.key %>
+        <% end %>
+        <div class="card-reservation-infos">
+          <h2><%= reservation.game.name %></h2>
+          <p><strong>From: <%= reservation.start_date %></strong></p>
+          <p><strong>To: <%= reservation.end_date %></strong></p>
+          <p><%= reservation.status %></p>
+          <% if reservation.status == "pending" %>
+          <div class="edit-position">
+            <%= link_to "Edit", "#", class:"hbtn hb-fill-on", data: { toggle: "modal", target: "#Editcard"} %>
+            <div class="modal fade" id="Editcard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <%= render 'reservations/edit', reservation: reservation %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
       </div>
-    </div>
 
 
 

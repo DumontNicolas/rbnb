@@ -1,28 +1,16 @@
-<div class="container-index">
-  <div class="container-upper">
-    <div clas="container-title-search">
-      <h1>Games</h1>
-      <br>
-        <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-          <div class="search-form-control form-group">
-            <input class="form-control string required" type="text" name="name]" id="search_query", placeholder="What are you looking for?"/>
-            <button name="button" type="submit" class="btn btn-flat">
-              <i class="fas fa-search"></i> Search
-            </button>
-          </div>
-        </form>
-    </div>
-    <div class="container-new-game">
-      <% if policy(Game).create? %>
-        <button type="button" class="hbtn hb-fill-on" data-toggle="modal" data-target="#exampleModal" style="color:black">
-            Add your own game
-        </button>
-      <% end %>
-    </div>
+<div class="container">
+  <h1>Games</h1>
 
-  </div>
-  <br><br>
-
+  <br>
+  <br>
+  <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="name]" id="search_query", placeholder="What are you looking for?"/>
+      <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  </form>
   <div class="row">
     <div class="column results">
       <% @games.first(6).each_with_index do |game, i| %>
@@ -34,7 +22,7 @@
         <% end %>
         <div class="card-trip-infos">
           <div>
-            <h2><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em></h2>
+            <h2><%= link_to game.name, game_path(game), class:"stretched-link" %> - <em><%= game.category %></em></h2>
             <p><%= game.description %></p>
             </div>
             <h2 class="card-trip-pricing"><%= game.price %>$</h2>
@@ -47,6 +35,15 @@
 </div>
 
 <br>
+
+<div class="container-new-game">
+  <% if policy(Game).create? %>
+    <div class="hbtn hb-fill-on">
+        <%= link_to "New Game", new_game_path%>
+    </div>
+  <% end %>
+</div>
+
 
 
 
