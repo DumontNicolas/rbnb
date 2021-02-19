@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
     @reservation.game = @game
     @reservation.game = @game
     @reservation.user = current_user
-    @reservation.total = [reservation.game.price, reservation.game.price * nights].max
+    @reservation.total = [@reservation.game.price, @reservation.game.price * nights].max
     @reservation.status = "pending"
     authorize @reservation
     if @reservation.save!
