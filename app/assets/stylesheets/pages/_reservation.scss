@@ -28,6 +28,10 @@ table {
   margin-top: 20px;
 }
 
+.card-infos-text {
+  display: inline-flex;
+}
+
 .card-reservation img {
   height: 100%;
   width: 120px;
@@ -36,17 +40,17 @@ table {
 }
 
 .card-reservation h2 {
-  font-size: 16px;
+  font-size: 30px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-reservation p {
-  font-size: 12px;
+  font-size: 20px;
   line-height: 1.4;
   opacity: 0.7;
   margin-bottom: 0;
-  margin-top: 8px;
+  margin-left: 20px;
 }
 
 .card-reservation .card-reservation-infos {
