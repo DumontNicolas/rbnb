@@ -1,5 +1,4 @@
-
-.big-container{
+.big-container {
   padding: 20px;
   display: flex;
 }
@@ -20,15 +19,13 @@
 }
 
 .container-map {
-text-align: center;
+  text-align: center;
 }
 
 .map {
-
 }
 
 .owner {
-
 }
 
 .owner a {
@@ -39,22 +36,19 @@ text-align: center;
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   padding: 6px 12px;
 }
 
 .review .review-content {
   flex-grow: 1;
   padding: 0 24px;
-
 }
 
 .review-content p {
-
 }
 
 li {
-
 }
 
 .review p {
@@ -62,8 +56,21 @@ li {
   line-height: 1.4;
 }
 
+.carousel-inner {
+  width: 100%;
+  max-height: 500px !important;
+}
 
+.carousel-control-prev {
+  background: transparent;
+  border: 0px solid transparent;
+}
 
+.carousel-control-next {
+  background: transparent;
+  border: 0px solid transparent;
+}
 
-
-
+img {
+  border-radius: 7px;
+}
