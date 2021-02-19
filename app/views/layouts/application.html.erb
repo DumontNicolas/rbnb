@@ -46,8 +46,8 @@
               <div class="dropdown-item"><%= link_to current_user.first_name + " " + current_user.last_name, user_path(current_user) %></div>
               <div class="dropdown-item"><%= link_to "Log out", destroy_user_session_path, method: :delete%></div>
             <% else %>
-              <a class="dropdown-item" href="<%=new_user_registration_path%>">Sign up</a>
-              <a class="dropdown-item" href="<%=new_user_session_path%>">Sign in</a>
+              <div class="dropdown-item"> <%= link_to "Sign up", new_user_registration_path %></div>
+              <div class="dropdown-item"> <%= link_to "Sign in", new_user_session_path  %> </div>
             <% end %>
           </div>
         </li>
