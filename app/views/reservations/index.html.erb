@@ -7,105 +7,98 @@
   <li class="tab-underlined" id="requests">Incoming requests
   </li>
 </ul>
-<table id="bookings_table">
-  <thead>
-    <tr>
-      <th>Game:</th>
-      <th>From:</th>
-      <th>to:</th>
-      <th>Cost (per night):</th>
-      <th>Status:</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div id="bookings_table">
+
     <% @reservations.each do |reservation| %>
 
-    <div class="card-reservation">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-reservation-infos">
-        <h2>Product name</h2>
-        <p>Product description with <strong>relevant info</strong> only.</p>
+      <div class="card-reservation">
+        <% if reservation.game.photos.size == 0 %>
+        <%= image_tag "placeholders/#{rand(10)}.jpg" %>
+        <% else %>
+        <%= cl_image_tag reservation.game.photos.first.key %>
+        <% end %>
+        <div class="card-reservation-infos">
+          <div class="card-infos-text">
+            <h2><%= reservation.game.name %></h2>
+            <p><strong>From: <%= reservation.start_date %></strong></p>
+            <p><strong>To: <%= reservation.end_date %></strong></p>
+            <p><%= reservation.status %></p>
+          </div>
+          <% if reservation.status == "pending" %>
+          <div class="edit-position">
+            <%= link_to "Edit", "#", class:"hbtn hb-fill-on", data: { toggle: "modal", target: "#Editcard"} %>
+            <div class="modal fade" id="Editcard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <%= render 'reservations/edit', reservation: reservation %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+</div>
+
+
+<div id="requests_table" style="display:none">
+  <% @user.games.each do |game| %>
+<% game.reservations.each do |reservation| %>
+
+<div class="card-reservation">
+  <% if reservation.game.photos.size == 0 %>
+  <%= image_tag "placeholders/#{rand(10)}.jpg" %>
+  <% else %>
+  <%= cl_image_tag reservation.game.photos.first.key %>
+  <% end %>
+  <div class="card-reservation-infos">
+    <div class="card-infos-text">
+      <h2><%= reservation.game.name %></h2>
+      <p><strong>From: <%= reservation.start_date %></strong></p>
+      <p><strong>To: <%= reservation.end_date %></strong></p>
+      <p><%= reservation.status %></p>
+    </div>
+    <% if reservation.status == "pending" %>
+    <div class="edit-position">
+      <%= link_to "Edit", "#", class:"hbtn hb-fill-on", data: { toggle: "modal", target: "#Editcard"} %>
+      <div class="modal fade" id="Editcard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <%= render 'reservations/edit', reservation: reservation %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-
-
-        <tr>
-          <td><%= reservation.game.name %></td>
-          <td><%= reservation.start_date %></td>
-          <td><%= reservation.end_date %></td>
-          <td><%= reservation.game.price %>€</td>
-          <td><em><%= reservation.status %></em></td>
-          <% if reservation.status == "pending" %>
-            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit"> Edit </button></td>
-          </tr>
-          <div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                   </button>
-                </div>
-                <div class="modal-body">
-                   <%= render 'reservations/edit', reservation: reservation %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% end %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+<% end %>
+<% end %>
 
-
-<table id="requests_table" style="display:none">
-  <thead>
-    <tr>
-      <th>Game:</th>
-      <th>From:</th>
-      <th>to:</th>
-      <th>Cost (per night):</th>
-      <th>Status:</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.games.each do |game| %>
-      <% game.reservations.each do |reservation| %>
-        <tr>
-          <td><%= reservation.game.name %></td>
-          <td><%= reservation.start_date %></td>
-          <td><%= reservation.end_date %></td>
-          <td><%= reservation.game.price %>€</td>
-          <td><em><%= reservation.status %></em></td>
-          <% if reservation.status == "pending" %>
-            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Editrequest"> Edit </button></td>
-          </tr>
-          <div class="modal fade" id="Editrequest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                   </button>
-                </div>
-                <div class="modal-body">
-                   <%= render 'reservations/edit', reservation: reservation %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+  </div>
 </div>
