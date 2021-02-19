@@ -15,40 +15,28 @@
   </head>
 
   <body>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-
-  <a class="navbar-brand" href="#">
-    <img src="" />
-</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link-light" href="<%= root_path %>">search</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link-light" href="/games">browse games</a>
-      </li>
-      <% if user_signed_in? %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <a class="navbar-brand" href="#">
+      <img src="" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-         <button type="button" class="nav-link-light" data-toggle="modal" data-target="#exampleModal">
-            Add your own game
-        </button>
-
+          <a class="nav-link-light" href="<%= root_path %>">search</a>
         </li>
         <li class="nav-item">
           <a class="nav-link-light" href="/games">browse games</a>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-           <a class="nav-link-light" href='<%= new_game_path %>'>add your own game</a>
-          </li>
+          <button type="button" class="nav-link-light" data-toggle="modal" data-target="#exampleModal">
+            Add your own game
+          </button>
           <li class="nav-item">
-           <a class="nav-link-light" href='<%= user_reservations_path(current_user) %>'>my reservations</a>
+            <a class="nav-link-light" href='<%= user_reservations_path(current_user) %>'>my reservations</a>
           </li>
         <% end %>
         <li class="nav-item dropdown">
@@ -63,19 +51,6 @@
             <% end %>
           </div>
         </li>
-      <% end %>
-      <li class="nav-item dropdown">
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png" />
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <% if user_signed_in? %>
-            <div class="dropdown-item"><%= link_to current_user.first_name + " " + current_user.last_name, user_path(current_user) %></div>
-            <div class="dropdown-item"><%= link_to "Log out", destroy_user_session_path, method: :delete%></div>
-          <% else %>
-            <a class="dropdown-item" href="<%=new_user_registration_path%>">Sign up</a>
-            <a class="dropdown-item" href="<%=new_user_session_path%>">Sign in</a>
-          <% end %>
-        </div>
-      </li>
     </ul>
   </div>
 </div>
