@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @game = Game.find(params[:reservation][:game])
+    @game = Game.find(params[:game_id])
     @reservation = Reservation.new(reservation_params)
     start_date = reservation_params["start_date"].split('to')[0].strip
     end_date = reservation_params["start_date"].split('to')[1].strip
@@ -26,8 +26,8 @@ class ReservationsController < ApplicationController
     @reservation.game = @game
     @reservation.game = @game
     @reservation.user = current_user
-    @reservation.total = [@game.price, @game.price * nights].max
-    @reservation.status = "Pending"
+    @reservation.total = [@reservation.game.price, @reservation.game.price * nights].max
+    @reservation.status = "pending"
     authorize @reservation
     if @reservation.save!
       redirect_to user_reservations_path(@reservation.user)
