@@ -12,7 +12,6 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
     </div>
-
     <div class="hbtn hb-fill-on">
       <%= f.button :submit, "Log in"%>
       <% if user_signed_in? == false %>
