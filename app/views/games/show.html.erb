@@ -35,7 +35,6 @@
       <div class="container-review">
 
         <br>
-        <ul>
           <% @game.reservations.each do |reservation| %>
             <% unless reservation.reviews.empty? %>
               <% reservation.reviews.each do |review| %>
@@ -50,11 +49,10 @@
               <% end %>
             <% end %>
           <% end %>
-        </ul>
     </div>
     </div>
   </div>
- <div class="col-2"></div>
+  <div class="col-1"></div>
   <div class="container-map col-4">
     <div id="map" style="width: 100%; height: 400px;"
          data-markers="<%= @markers.to_json %>"
@@ -73,7 +71,9 @@
 
 <div class="show-reservation">
     <% if current_user != @game.user %>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newreserve"> Reserve </button>
+
+
+      <%= link_to "reserve", "#", class:"hbtn hb-fill-on", data: { toggle: "modal", target: "#newreserve"} %>
           <div class="modal fade" id="newreserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
