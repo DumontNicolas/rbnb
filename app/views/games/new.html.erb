@@ -13,11 +13,9 @@
     <%= f.input :description %>
     <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
     <%= f.input :price %>
-    <%= f.input :photo, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %> input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
     <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
   </div>
-
-
 
 <br>
   <div class= "btn-create-game">
@@ -27,6 +25,7 @@
   </div>
   <% end %>
 </div>
+
 <br>
 <br>
 <div class="show-back">

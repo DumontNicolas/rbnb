@@ -25,13 +25,17 @@
 
   <div class="row">
     <div class="column results">
-      <% @games.first(6).each do |game| %>
-        <div class="card-trip">
-          <img src="https://images.pexels.com/photos/776654/pexels-photo-776654.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em></h2>
-              <p><%= game.description %></p>
+      <% @games.first(6).each_with_index do |game, i| %>
+      <div class="card-trip">
+        <% if game.photos.size == 0 %>
+        <img src="<%="https://source.unsplash.com/random?sig=#{i},gaming" %>" />
+        <% else %>
+        <%= cl_image_tag game.photos.first.key %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em></h2>
+            <p><%= game.description %></p>
             </div>
             <h2 class="card-trip-pricing"><%= game.price %>$</h2>
             <img src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png" class="card-trip-user avatar-bordered" />
