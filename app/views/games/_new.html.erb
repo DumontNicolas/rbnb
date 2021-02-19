@@ -1,0 +1,18 @@
+
+<%= simple_form_for(game) do |f| %>
+
+<div class="container-create-game">
+  <div class="container-login">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
+    <%= f.input :price %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, label_html: { class: 'upload-photo'}, label: '📷' %>
+  </div>
+
+<br>
+
+  <% end %>
+</div>
+
+

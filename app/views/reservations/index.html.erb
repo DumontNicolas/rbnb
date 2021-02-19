@@ -1,60 +1,62 @@
-<h1> <%= @user.first_name %>'s reservations</h1>
+<div class="container">
+  <h1> <%= @user.first_name %>'s reservations</h1>
 
-<ul class="list-inline tabs-underlined">
-  <li class="tab-underlined active" id="bookings">My bookings
-  </li>
-  <li class="tab-underlined" id="requests">Incoming requests
-  </li>
-</ul>
-<table id="bookings_table">
-  <thead>
-    <tr>
-      <th>Game:</th>
-      <th>From:</th>
-      <th>to:</th>
-      <th>Cost (per night):</th>
-      <th>Status:</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reservations.each do |reservation| %>
-        <tr>
-          <td><%= reservation.game.name %></td>
-          <td><%= reservation.start_date %></td>
-          <td><%= reservation.end_date %></td>
-          <td><%= reservation.game.price %>€</td>
-          <td><em><%= reservation.status %></em></td>
-          <td><%= link_to "Edit", edit_reservation_path(reservation) %> - <%= link_to "Delete", reservation_path(reservation), method: :delete, confirm: "Delete this reservation?" %></em></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<table id="requests_table" style="display:none">
-  <thead>
-    <tr>
-      <th>Game:</th>
-      <th>From:</th>
-      <th>to:</th>
-      <th>Cost (per night):</th>
-      <th>Status:</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.games.each do |game| %>
-      <% game.reservations.each do |reservation| %>
-        <tr>
-          <td><%= reservation.game.name %></td>
-          <td><%= reservation.start_date %></td>
-          <td><%= reservation.end_date %></td>
-          <td><%= reservation.game.price %>€</td>
-          <td><em><%= reservation.status %></em></td>
-          <td><%= link_to "Edit", edit_reservation_path(reservation) %> - <%= link_to "Delete", reservation_path(reservation), method: :delete, confirm: "Delete this reservation?" %></em></td>
-        </tr>
+  <ul class="list-inline tabs-underlined">
+    <li class="tab-underlined active" id="bookings">My bookings
+    </li>
+    <li class="tab-underlined" id="requests">Incoming requests
+    </li>
+  </ul>
+  <table id="bookings_table">
+    <thead>
+      <tr>
+        <th>Game:</th>
+        <th>From:</th>
+        <th>to:</th>
+        <th>Cost (per night):</th>
+        <th>Status:</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.game.name %></td>
+            <td><%= reservation.start_date %></td>
+            <td><%= reservation.end_date %></td>
+            <td><%= reservation.game.price %>€</td>
+            <td><em><%= reservation.status %></em></td>
+            <td><em><%= link_to "Edit", edit_reservation_path(reservation) %> </em></td>
+          </tr>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+
+  <table id="requests_table" style="display:none">
+    <thead>
+      <tr>
+        <th>Game:</th>
+        <th>From:</th>
+        <th>to:</th>
+        <th>Cost (per night):</th>
+        <th>Status:</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.games.each do |game| %>
+        <% game.reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.game.name %></td>
+            <td><%= reservation.start_date %></td>
+            <td><%= reservation.end_date %></td>
+            <td><%= reservation.game.price %>€</td>
+            <td><em><%= reservation.status %></em></td>
+            <td><%= link_to "Edit", edit_reservation_path(reservation) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

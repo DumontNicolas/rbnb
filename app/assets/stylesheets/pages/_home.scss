@@ -3,8 +3,8 @@
 @import "../components/map";
 
 
-.container {
-  padding: 30px;
+#container {
+  padding: 50px;
 }
 
 body {
@@ -65,5 +65,15 @@ h2 {
 a:hover {
   color: #ed6161 !important;
 }
+
+.nav-item button {
+  background-color: transparent !important;
+  border: 0px solid transparent;
+}
+
+.nav-item button:hover {
+  color: rgb(237,97,97)!important;
+}
+
 
 

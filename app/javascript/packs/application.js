@@ -26,10 +26,12 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-import { autoComplete } from "./components/autocomplete";
-import { initMapbox } from "../plugins/init_mapbox";
-import { initTyped } from "../plugins/init_typed";
-import tabs from "./components/tabs";
+import { autoComplete } from './components/autocomplete';
+import { initMapbox } from '../plugins/init_mapbox';
+import { initTyped } from '../plugins/init_typed';
+import { previewImageOnFileSelect } from './components/photo_preview';
+import tabs from './components/tabs';
+
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
@@ -37,4 +39,5 @@ document.addEventListener("turbolinks:load", () => {
   tabs();
   autoComplete();
   initMapbox();
+  previewImageOnFileSelect();
 });
