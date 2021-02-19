@@ -1,0 +1,53 @@
+.container-index {
+  padding: 20px;
+}
+
+.container-new-game {
+
+}
+
+.container-new-game .hbtn {
+  position: absolute;
+  right: 268px;
+  top: 158px;
+}
+
+.container-upper {
+  padding-left: 100px;
+  display: flex;
+  position: relative;
+}
+
+.column {
+  height: auto;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 16px;
+}
+
+@media (max-width: 1550px) {
+  .column {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1280px) {
+  .column {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+@media (max-width: 960px) {
+  .column {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+.search-form-control {
+  width: 500px;
+}
+
+.row {
+  justify-content: center;
+}
