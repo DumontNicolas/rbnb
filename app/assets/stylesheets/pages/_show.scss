@@ -1,7 +1,7 @@
 .big-container {
-  padding: 20px;
+  padding: 50px;
   display: flex;
-  min-height: 800px;
+  min-height: 650px;
 }
 
 .img-show img {
@@ -15,6 +15,12 @@
   text-align: center;
 }
 
+
+.show-reservation > .hbtn {
+  font-size: 50px;
+}
+
+
 .show-back {
   text-align: right;
 }
@@ -24,11 +30,16 @@
 }
 
 #map {
-   border: 2px solid black;
-   box-shadow: 0 1px 2px rgba(255,255,255,0.2);
+   border: 4px solid black;
+   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
+.owner p {
+  opacity: 0.7;
+}
 .owner {
+  padding: -10px;
+  text-align: right;
 }
 
 .owner a {
@@ -36,7 +47,7 @@
 }
 
 .review {
-  margin-top: 50px;
+  margin-top: 150px;
   display: flex;
   align-items: center;
   margin-bottom: 8px;
@@ -78,3 +89,15 @@ li {
 img {
   border-radius: 7px;
 }
+
+
+.container-review {
+  width: 600px;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+
+
+
