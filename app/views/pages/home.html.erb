@@ -3,5 +3,74 @@
 
   <br>
   <%= link_to "Discover the board games nearby", games_path, class:"hbtn hb-fill-on" %>
+
+  <h2>Most popular games</h2>
+  <div class="row">
+    <div class="column">
+    <% Game.all.sort_by { |game| game.reservations.count }.last(3).each do |game| %>
+      <div class="card-trip">
+        <% if game.photos.size == 0 %>
+        <%= image_tag "placeholders/#{rand(10)}.jpg" %>
+        <% else %>
+        <%= cl_image_tag game.photos.first.key %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em></h2>
+            <p><%= game.description %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= game.price %>$</h2>
+            <img src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png" class="card-trip-user avatar-bordered" />
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <h2> Discover new games </h2>
+  <div class="row">
+    <div class="column">
+    <% Game.all.sample(3).each do |game| %>
+      <div class="card-trip">
+        <% if game.photos.size == 0 %>
+        <%= image_tag "placeholders/#{rand(10)}.jpg" %>
+        <% else %>
+        <%= cl_image_tag game.photos.first.key %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em></h2>
+            <p><%= game.description %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= game.price %>$</h2>
+            <img src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png" class="card-trip-user avatar-bordered" />
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <h2> Our choices </h2>
+  <div class="row">
+    <div class="column">
+    <% Game.all.sort_by { |game| game.user.reviews.count }.last(3).each do |game| %>
+      <div class="card-trip">
+        <% if game.photos.size == 0 %>
+        <%= image_tag "placeholders/#{rand(10)}.jpg" %>
+        <% else %>
+        <%= cl_image_tag game.photos.first.key %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to game.name, game_path(game) %> - <em><%= game.category %></em></h2>
+            <p><%= game.description %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= game.price %>$</h2>
+            <img src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png" class="card-trip-user avatar-bordered" />
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
