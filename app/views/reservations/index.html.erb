@@ -20,6 +20,17 @@
   </thead>
   <tbody>
     <% @reservations.each do |reservation| %>
+
+    <div class="card-reservation">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-reservation-infos">
+        <h2>Product name</h2>
+        <p>Product description with <strong>relevant info</strong> only.</p>
+      </div>
+    </div>
+
+
+
         <tr>
           <td><%= reservation.game.name %></td>
           <td><%= reservation.start_date %></td>
