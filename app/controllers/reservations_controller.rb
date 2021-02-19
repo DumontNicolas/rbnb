@@ -38,13 +38,11 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
-    @game = Game.find(params[:reservation][:game])
-    @reservation.game = @game
     authorize @reservation
     if @reservation.update(reservation_params)
-      redirect_to user_reservations_path(@reservation.user)
+      redirect_to user_reservations_path(current_user)
     else
-      render :new
+      render :edit
     end
   end
 
