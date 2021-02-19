@@ -14,9 +14,9 @@
     </div>
     <div class="container-new-game">
       <% if policy(Game).create? %>
-        <div class="hbtn hb-fill-on">
-            <%= link_to "Add a New Game", new_game_path%>
-        </div>
+        <button type="button" class="hbtn hb-fill-on" data-toggle="modal" data-target="#exampleModal" style="color:black">
+            Add your own game
+        </button>
       <% end %>
     </div>
 
