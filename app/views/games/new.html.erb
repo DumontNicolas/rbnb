@@ -1,24 +1,24 @@
-<br>
+<div class="container">
+  <h1>Rent your own game!</h1>
 
-<h1>Rent your own game!</h1>
+  <br>
+  <br>
+  <%= simple_form_for(@game) do |f| %>
 
-<br>
-<br>
-<%= simple_form_for(@game) do |f| %>
-
-  <div id="container-login">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
-    <%= f.input :price %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  </div>
+    <div class="container-login">
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
+      <%= f.input :price %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    </div>
 <br>
   <div class="hbtn hb-fill-on">
     <%= f.button :submit, "Create Game"%>
   </div>
   <% end %>
 
-<br>
-<br>
-<%= link_to "Back to games list", games_path %>
+  <br>
+  <br>
+  <%= link_to "Back to games list", games_path %>
+</div>
