@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
     @user = User.find(params[:user_id])
     @reservations = policy_scope(Reservation).order(created_at: :desc).where("user_id = #{@user.id}") 
     if @user == current_user
-      @authorized_user = true   
+      @authorized_user = true
     else
       redirect_to root_path
     end
@@ -43,13 +43,11 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
-    @game = Game.find(params[:reservation][:game])
-    @reservation.game = @game
     authorize @reservation
     if @reservation.update(reservation_params)
-      redirect_to user_reservations_path(@reservation.user)
+      redirect_to user_reservations_path(current_user)
     else
-      render :new
+      render :edit
     end
   end
 

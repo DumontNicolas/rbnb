@@ -2,59 +2,97 @@
   <h1> <%= @user.first_name %>'s reservations</h1>
 
   <ul class="list-inline tabs-underlined">
-    <li class="tab-underlined active" id="bookings">My bookings
-    </li>
-    <li class="tab-underlined" id="requests">Incoming requests
-    </li>
-  </ul>
-  <table id="bookings_table">
-    <thead>
-      <tr>
-        <th>Game:</th>
-        <th>From:</th>
-        <th>to:</th>
-        <th>Cost (per night):</th>
-        <th>Status:</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @reservations.each do |reservation| %>
-          <tr>
-            <td><%= reservation.game.name %></td>
-            <td><%= reservation.start_date %></td>
-            <td><%= reservation.end_date %></td>
-            <td><%= reservation.game.price %>€</td>
-            <td><em><%= reservation.status %></em></td>
-            <td><em><%= link_to "Edit", edit_reservation_path(reservation) %> </em></td>
+  <li class="tab-underlined active" id="bookings">My bookings
+  </li>
+  <li class="tab-underlined" id="requests">Incoming requests
+  </li>
+</ul>
+<table id="bookings_table">
+  <thead>
+    <tr>
+      <th>Game:</th>
+      <th>From:</th>
+      <th>to:</th>
+      <th>Cost (per night):</th>
+      <th>Status:</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.game.name %></td>
+          <td><%= reservation.start_date %></td>
+          <td><%= reservation.end_date %></td>
+          <td><%= reservation.game.price %>€</td>
+          <td><em><%= reservation.status %></em></td>
+          <% if reservation.status == "pending" %>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit"> Edit </button></td>
           </tr>
-      <% end %>
-    </tbody>
-  </table>
+          <div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                </div>
+                <div class="modal-body">
+                   <%= render 'reservations/edit', reservation: reservation %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+    <% end %>
+  </tbody>
+</table>
 
 
-  <table id="requests_table" style="display:none">
-    <thead>
-      <tr>
-        <th>Game:</th>
-        <th>From:</th>
-        <th>to:</th>
-        <th>Cost (per night):</th>
-        <th>Status:</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @user.games.each do |game| %>
-        <% game.reservations.each do |reservation| %>
-          <tr>
-            <td><%= reservation.game.name %></td>
-            <td><%= reservation.start_date %></td>
-            <td><%= reservation.end_date %></td>
-            <td><%= reservation.game.price %>€</td>
-            <td><em><%= reservation.status %></em></td>
-            <td><%= link_to "Edit", edit_reservation_path(reservation) %></td>
+<table id="requests_table" style="display:none">
+  <thead>
+    <tr>
+      <th>Game:</th>
+      <th>From:</th>
+      <th>to:</th>
+      <th>Cost (per night):</th>
+      <th>Status:</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.games.each do |game| %>
+      <% game.reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.game.name %></td>
+          <td><%= reservation.start_date %></td>
+          <td><%= reservation.end_date %></td>
+          <td><%= reservation.game.price %>€</td>
+          <td><em><%= reservation.status %></em></td>
+          <% if reservation.status == "pending" %>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Editrequest"> Edit </button></td>
           </tr>
+          <div class="modal fade" id="Editrequest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                </div>
+                <div class="modal-body">
+                   <%= render 'reservations/edit', reservation: reservation %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
         <% end %>
       <% end %>
     </tbody>
