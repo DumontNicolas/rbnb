@@ -35,7 +35,7 @@
       </li>
       <% if user_signed_in? %>
         <li class="nav-item">
-         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+         <button type="button" class="nav-link-light" data-toggle="modal" data-target="#exampleModal">
             Add your own game
         </button>
         </li>
@@ -79,8 +79,8 @@
         <%= render "games/new", game: Game.new %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="button-new-game-close" data-dismiss="modal">Close</button>
+        <button type="button" class="button-new-game-create">Save changes</button>
       </div>
     </div>
   </div>
