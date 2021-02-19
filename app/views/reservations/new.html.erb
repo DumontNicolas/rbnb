@@ -7,7 +7,7 @@
      <%= f.input :start_date, placeholder: "Choose your date", label: "When would you like to rent ?", as: :string, required: false, input_html: {class: "datepicker"} %>
      <%= f.input :game, collection: Game.all %>
      <div class="submit-reservation">
-      <%= f.submit %>
+      <%= f.submit { class: 'btn-create-reservation'} %>
      </div>
    <% end %>
   </div>
