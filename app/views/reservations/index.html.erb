@@ -1,6 +1,7 @@
-<h1> <%= @user.first_name %>'s reservations</h1>
+<div class="container">
+  <h1> <%= @user.first_name %>'s reservations</h1>
 
-<ul class="list-inline tabs-underlined">
+  <ul class="list-inline tabs-underlined">
   <li class="tab-underlined active" id="bookings">My bookings
   </li>
   <li class="tab-underlined" id="requests">Incoming requests
@@ -93,6 +94,6 @@
           </div>
           <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

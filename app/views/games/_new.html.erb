@@ -1,25 +1,17 @@
-<div class="container">
-  <h1>Rent your own game!</h1>
 
-  <br>
-  <br>
-  <%= simple_form_for(game) do |f| %>
+<%= simple_form_for(game) do |f| %>
 
-    <div class="container-login">
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
-      <%= f.input :price %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden' }, label_html: { class: 'upload-photo'}, label: ':camera: Upload a photo' %>
-      <%= cl_image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-    </div>
+<div class="container-create-game">
+  <div class="container-login">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :category, collection: %W[Memory Card Knowledge Dices Logic Board Investigation]  %>
+    <%= f.input :price %>
+    <%= f.input :photos, input_html: { class: 'd-none', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>  </div>
+<%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
 <br>
-  <div class="hbtn hb-fill-on">
-    <%= f.button :submit, "Create Game"%>
-  </div>
-  <% end %>
 
-  <br>
-  <br>
-  <%= link_to "Back to games list", games_path %>
+  <% end %>
 </div>
+
+
