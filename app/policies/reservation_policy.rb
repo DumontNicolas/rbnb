@@ -14,7 +14,8 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   def update?
-    @record.status == "pending"
+    # @record.status == "pending"
+    true
   end
 
   def destroy?

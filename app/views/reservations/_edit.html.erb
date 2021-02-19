@@ -1,0 +1,12 @@
+        <h1><%=reservation.game.name%></h1>
+
+        <%= simple_form_for(reservation) do |f| %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <% if reservation.user != reservation.game.user %>
+            <%= f.input :status, collection: %W[Confirmed Cancelled Pending Completed]  %>
+          <% end %>
+          <%= f.submit %>
+        <% end %>
+
+<%= link_to "Back to games list", games_path %>
